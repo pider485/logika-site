@@ -43,10 +43,10 @@ class DatabaseManager:
         return data
     
 
-    def add_article(self, title, content, image, user_id, category_id):
+    def add_article(self, title, content, image, price, category_id):
         self.open()
-        self.cursor.execute("""INSERT INTO articles(title, content, image, user_id, category_id)
-                            VALUES(?,?,?,?,?)""", [title, content, image, user_id, int(category_id)])
+        self.cursor.execute("""INSERT INTO articles(title, content, price,image, category_id)
+                            VALUES(?,?,?,?,?)""", [title, content, price, image, int(category_id)])
         self.conn.commit()
         self.close()
         return 

@@ -41,7 +41,7 @@ def new_article():
             image = request.files['image'] #отримуємо файл картинки
             image.save(IMG_PATH + image.filename)
             db.add_article(request.form['title'], request.form['content'], 
-                        image.filename, 1, request.form['category'])
+                        image.filename, request.form['price'],request.form['category'])
             flash("Статтю додано", "alert-success")
         else:
             flash("Виберіть категорію і заповніть всі поля.", "alert-warning")
