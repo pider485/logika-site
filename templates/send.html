@@ -1,36 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
 <main class="container py-5">
-  <form class="row g-3">
+  <form class="row g-3" method='post' action="">
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Пошта</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Olek@gmail.com">
+      <input required name="email" type="email" class="form-control" id="inputEmail4" placeholder="Olek@gmail.com">
     </div>
     <div class="col-md-6">
-      <label for="inputPassword4" class="form-label">ПІП</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Інасів Ігор Ігорович">
+      <label for="inputPassword4" class="form-label">ПІБ</label>
+      <input required name="name" type="password" class="form-control" id="inputPassword4" placeholder="Інасів Ігор Ігорович">
     </div>
     <div class="col-12">
       <label for="inputAddress" class="form-label">Номер телефона</label>
-      <input type="text" class="form-control" id="telephon" placeholder="+3801234567">
+      <input required name="phone" type="text" class="form-control" id="telephon" placeholder="+3801234567">
     </div>
     <div class="col-12">
       <label for="inputAddress2" class="form-label">Вулиця</label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+      <input required name="adrees" type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
       <div class="col-md-6">
         <label for="inputCity" class="form-label">місто</label>
-        <input type="text" class="form-control" id="inputCity" placeholder="Львів">
+        <input required name="city" type="text" class="form-control" id="inputCity" placeholder="Львів">
       </div>
       <div class="col-12">
         <div class="form-check">
           <input class="form-check-input" type="checkbox" id="gridCheck">
-          <label class="form-check-label" for="gridCheck">
+          <label name="call-back" class="form-check-label" for="gridCheck">
             Передзвоніть для підтрвердження
           </label>
         </div>
       </div>
       <div class="col-12">
-        <button type="submit" class="btn btn-primary">Замовити</button>
+        <h4>До оплати {{product[5]}} грн</h4>
+        <h4>{{product[1]}}</h4>
+        <button  type="submit" class="btn btn-primary">Замовити</button>
       </div>
   </form>
 </main>

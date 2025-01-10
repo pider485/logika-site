@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, redirect, url_for
 from dotenv import load_dotenv
 load_dotenv() #завантажуємо змінні середовища з .env
 import os
@@ -58,9 +58,16 @@ def search():
 
     return render_template("index.html", articles=articles)  # html-сторінка, що повертається у браузер
 
-@app.route("/send")
+@app.route("/send", methods=["GET", "POST"])
 def send():
-    return render_template("send.html") 
+    product_id = request.args.get("product_id")
+    product= db.get_article(product_id)
+    if request.method == 'POST':
+        db.add_order(request.form['email'],request.form['name'],request.form['phone'],request.form['city'],request.form['adrees'],product[5],product_id)
+        flash("Замовлення прийнято", 'alert-success')
+        return redirect(url_for("index"))
+   
+    return render_template("send.html", product = product) 
 
 if __name__ == "__main__":
     app.config['TEMPLATES_AUTO_RELOAD'] = True  # автоматичне оновлення шаблонів

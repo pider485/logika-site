@@ -58,3 +58,11 @@ class DatabaseManager:
         data = self.cursor.fetchall()
         self.close()
         return data
+
+    def add_order(self, email, name, phone, city, adrees, cost, product_id):
+        self.open()
+        self.cursor.execute("""INSERT INTO oreders(email, name, phone, city, adrees, cost, product_id)
+                            VALUES(?,?,?,?,?,?,?)""", [email, name, phone, city, adrees, cost, product_id])
+        self.conn.commit()
+        self.close()
+        return 

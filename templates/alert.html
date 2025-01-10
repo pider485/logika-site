@@ -1,5 +1,5 @@
 {% for category, message in get_flashed_messages(True) %}
-<div class="alert alert-primary" role="alert">
+<div class="alert {{category}} alert-primary" role="alert">
     {{message}}
 </div>
 {% endfor %}
